@@ -4,8 +4,8 @@ public class Status {
     private int statusCode;
     private String description;
 
-    public static int DB_ERROR = 1001;
-    public static int SUCCESS = 1000;
+      public static int DB_ERROR = 1001;
+      public static int SUCCESS = 1000;
 
     public Status(int statusCode, String description) {
         this.statusCode = statusCode;

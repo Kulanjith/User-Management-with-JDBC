@@ -28,6 +28,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import static com.hms.usermgnt.api.model.dto.Status.DB_ERROR;
+import static com.hms.usermgnt.api.model.dto.Status.SUCCESS;
+
 
 @RestController
 @RequestMapping("/api/v1")
@@ -98,13 +101,13 @@ public class UserController {
         try {
             Optional<User> user = userRepository.getUserWithId(id);
             if (user != null && user.isPresent()) {
-                return new GetUserWithIdResponse(userConverter.entityToDto(user.get()),new Status(1000,"success"));
+                return new GetUserWithIdResponse(userConverter.entityToDto(user.get()),new Status(SUCCESS,"success"));
             } else {
                 LOGGER.info("User not found for [ id: {} ]", id);
             }
         } catch (Exception e) {
             LOGGER.error("Error while getting user with Id", e);
-            return new GetUserWithIdResponse(new Status(1001,"unsuccessful"));
+            return new GetUserWithIdResponse(new Status(DB_ERROR,"unsuccessful"));
         }
 
         LOGGER.info("User INFO return successfully for userId[{}]", id);
