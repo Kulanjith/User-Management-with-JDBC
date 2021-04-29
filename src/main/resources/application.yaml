@@ -1,0 +1,13 @@
+server:
+  port: 8080
+#  servlet:
+#    context-path: /usermng
+
+spring:
+  datasource:
+    name: users
+    generate-unique-name: false
+
+  h2:
+    console:
+      enabled: true
